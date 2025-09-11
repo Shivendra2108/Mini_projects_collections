@@ -1,0 +1,40 @@
+import json
+
+questions = {
+    "Who developed Java?": "James Gosling",
+    "What is 5*6?": "30",
+    "Capital of France?": "Paris"
+}
+
+leaderboard_file = "leaderboard.json"
+
+def load_leaderboard():
+    try:
+        with open(leaderboard_file, "r") as f:
+            return json.load(f)
+    except:
+        return {}
+
+def save_leaderboard(board):
+    with open(leaderboard_file, "w") as f:
+        json.dump(board, f)
+
+score = 0
+for q, ans in questions.items():
+    user_ans = input(q + " ")
+    if user_ans.strip().lower() == ans.lower():
+        print("✅ Correct!")
+        score += 1
+    else:
+        print("❌ Wrong!")
+
+print(f"\n🏆 Final Score: {score}")
+
+name = input("Enter your name: ")
+leaderboard = load_leaderboard()
+leaderboard[name] = score
+save_leaderboard(leaderboard)
+
+print("\n📊 Leaderboard:")
+for player, sc in leaderboard.items():
+    print(player, ":", sc)
