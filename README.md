@@ -18,6 +18,3 @@ Perfect for practice and demonstrations .
 
 ## 🔹 4. Directory (python)
 
-Run with:
-```bash
-python expense_tracker.py
