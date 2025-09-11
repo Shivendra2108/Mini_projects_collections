@@ -1,1 +1,1 @@
-# python-sample
+# Mini_projects_collection
