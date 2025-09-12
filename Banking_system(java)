@@ -1,0 +1,52 @@
+import java.util.*;
+
+class BankAccount {
+    String name;
+    double balance;
+
+    BankAccount(String name, double balance) {
+        this.name = name;
+        this.balance = balance;
+    }
+
+    void deposit(double amt) {
+        balance += amt;
+        System.out.println("✅ Deposited: " + amt);
+    }
+
+    void withdraw(double amt) {
+        if (amt <= balance) {
+            balance -= amt;
+            System.out.println("✅ Withdrawn: " + amt);
+        } else {
+            System.out.println("❌ Insufficient funds!");
+        }
+    }
+
+    void checkBalance() {
+        System.out.println("💰 Balance: " + balance);
+    }
+}
+
+public class BankingSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        BankAccount acc = new BankAccount("User", 1000);
+
+        while (true) {
+            System.out.println("\n--- Banking System ---");
+            System.out.println("1. Deposit\n2. Withdraw\n3. Balance\n4. Exit");
+            int ch = sc.nextInt();
+
+            if (ch == 1) {
+                System.out.print("Enter amount: ");
+                acc.deposit(sc.nextDouble());
+            } else if (ch == 2) {
+                System.out.print("Enter amount: ");
+                acc.withdraw(sc.nextDouble());
+            } else if (ch == 3) {
+                acc.checkBalance();
+            } else break;
+        }
+    }
+}
